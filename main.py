@@ -20,7 +20,7 @@ def calculate_molar_mass(formula):
 app = Flask(__name__)
 @app.route('/')
 def index():
-    return render_template('index.html',title='Clemistry Suite')
+    return render_template('index.html',title='Chemi')
 @app.route('/about')
 def about():
     return render_template('about.html', title='About')
