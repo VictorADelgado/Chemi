@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>{{title}}</h1>
+    <form method="post">
+        <label for="equation">Enter chemical equation:</label>
+        <input type="text" id="equation" name="equation" required>
+        <button type="submit">Balance Equation</button>
+    </form>
+    {% if balanced_equation %}
+        <p>Balanced equation: {{ balanced_equation }}</p>
+    {% endif %}
+{% endblock %}
