@@ -36,7 +36,7 @@ def balance():
         balanced_equation = balance_equation(equation)
         return render_template('balance.html', title='Balance Equation', balanced_equation=balanced_equation)
     return render_template('balance.html', title='Balance Equation')
-@app.route('/calculate/molar-mass', methods=['POST'])
+@app.route('/calculate/molar-mass', methods=['GET', 'POST'])
 def molar_mass():
     if request.method == 'POST':
         formula = request.form.get('formula')
