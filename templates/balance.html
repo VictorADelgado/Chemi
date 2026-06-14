@@ -2,8 +2,8 @@
 
 {% block content %}
     <h1>{{title}}</h1>
-    <form method="post">
-        <label for="equation">Enter chemical equation:</label>
+    <form method="POST">
+        <label for="equation">Enter chemical equation (Example: H2 + O2 -> H2O):</label>
         <input type="text" id="equation" name="equation" required>
         <button type="submit">Balance Equation</button>
     </form>
