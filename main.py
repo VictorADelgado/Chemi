@@ -41,9 +41,10 @@ def molar_mass():
     if request.method == 'POST':
         formula = request.form.get('formula')
         if not formula:
-            return render_template('calculate.html', title='Calculate Molar Mass', error='Please enter a chemical formula.')
+            return render_template('molar-mass.html', title='Calculate Molar Mass', error='Please enter a chemical formula.')
         molar_mass = calculate_molar_mass(formula)
-        return render_template('calculate.html', title='Calculate Molar Mass', molar_mass=molar_mass)
+        return render_template('molar-mass.html', title='Calculate Molar Mass', molar_mass=molar_mass,formula=formula)
+    return render_template('molar-mass.html', title='Calculate Molar Mass')
 
 if __name__ == '__main__':
     app.run(debug=True)
