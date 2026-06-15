@@ -16,9 +16,9 @@
         <div class="history">
             <h3>History (Last 5):</h3>
             <ul>
-                {% for item in history|reverse %}
+                {% for item in molar_mass_history|reverse %}
                 <li>
-                    <strong>Input:</strong> {{ item.input }} <br>
+                    <strong>Input:</strong> {{ item.formula }} <br>
                     <strong>Molar Mass:</strong> {{ item.molar_mass }} g/mol
                     <hr>
                 </li>
