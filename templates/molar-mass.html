@@ -12,4 +12,18 @@
     {% if molar_mass is not none %}
         <h2>Molar Mass of {{ formula }}: {{ molar_mass }} g/mol</h2>
     {% endif %}
+    {% if history %}
+        <div class="history">
+            <h3>History (Last 5):</h3>
+            <ul>
+                {% for item in history|reverse %}
+                <li>
+                    <strong>Input:</strong> {{ item.input }} <br>
+                    <strong>Molar Mass:</strong> {{ item.molar_mass }} g/mol
+                    <hr>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
 {% endblock %}
