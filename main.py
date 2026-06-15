@@ -35,6 +35,7 @@ def balance():
     balanced_equation = None
     equation = None
     if request.method == 'POST':
+        equation = request.form.get('equation')
         if equation:
             balanced_equation = balance_equation(equation)
             current_history = session['balance_history']
@@ -48,7 +49,7 @@ def balance():
             return render_template('balance.html', title='Balance Equation', error='Please enter a chemical equation.')
         balanced_equation = balance_equation(equation)
         session['balance_history'].append((equation, balanced_equation))
-        return render_template('balance.html', title='Balance Equation', balanced_equation=balanced_equation,history=session['balance_history'])
+        return render_template('balance.html', title='Balance Equation', balanced_equation=balanced_equation,balance_history=session['balance_history'])
     return render_template('balance.html', title='Balance Equation')
 @app.route('/calculate/molar-mass', methods=['GET', 'POST'])
 def molar_mass():
@@ -57,6 +58,7 @@ def molar_mass():
     formula = None
     molar_mass = None
     if request.method == 'POST':
+        formula = request.form.get('formula')
         if formula:
             molar_mass = calculate_molar_mass(formula)
             current_history = session['molar_mass_history']
@@ -66,8 +68,7 @@ def molar_mass():
             })
             session['molar_mass_history'] = current_history[-5:]
             session.modified = True
-        formula = request.form.get('formula')
-        if not formula:
+        else:
             return render_template('molar-mass.html', title='Calculate Molar Mass', error='Please enter a chemical formula.')
         molar_mass = calculate_molar_mass(formula)
         return render_template('molar-mass.html', title='Calculate Molar Mass', molar_mass=molar_mass,formula=formula)

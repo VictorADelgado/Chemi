@@ -3,10 +3,13 @@
 {% block content %}
     <h1>{{title}}</h1>
     <form method="POST">
-        <label for="equation">Enter chemical equation (Example: H2 + O2 -> H2O):</label>
-        <input type="text" id="equation" name="equation" required>
+        <label for="equation">Enter chemical equation:</label>
+        <input type="text" id="equation" name="equation" placeholder="e.g., H2 + O2 -> H2O" required>
         <button type="submit">Balance Equation</button>
     </form>
+    {% if balanced_equation %}
+        <p>Balanced equation: {{ balanced_equation }}</p>
+    {% endif %}
     {%if balance_history %}
         <div class="history">
             <h3>History (Last 5):</h3>
@@ -20,8 +23,5 @@
                 </li>
             </ul>
         </div>
-    {% endif %}
-    {% if balanced_equation %}
-        <p>Balanced equation: {{ balanced_equation }}</p>
     {% endif %}
 {% endblock %}

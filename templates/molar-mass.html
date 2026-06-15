@@ -9,10 +9,10 @@
         <input type="text" name="formula" placeholder="e.g. H2O" required>
         <button type="submit">Calculate</button>
     </form>
-    {% if molar_mass is not none %}
+    {% if molar_mass%}
         <h2>Molar Mass of {{ formula }}: {{ molar_mass }} g/mol</h2>
     {% endif %}
-    {% if history %}
+    {% if molar_mass_history %}
         <div class="history">
             <h3>History (Last 5):</h3>
             <ul>
