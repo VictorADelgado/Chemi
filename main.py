@@ -68,7 +68,7 @@ def molar_mass():
             session.modified = True
         else:
             return render_template('molar-mass.html', title='Calculate Molar Mass', error='Please enter a chemical formula.')
-        return render_template('molar-mass.html', title='Calculate Molar Mass', molar_mass=molar_mass,formula=formula)
+        return render_template('molar-mass.html', title='Calculate Molar Mass', molar_mass=molar_mass,formula=formula,molar_mass_history=session['molar_mass_history'])
     return render_template('molar-mass.html', title='Calculate Molar Mass')
 
 if __name__ == '__main__':
