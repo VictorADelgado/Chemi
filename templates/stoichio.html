@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{title}}</h1>
+<p>
+    Enter all the fields to get the result (all in moles):
+</p>
+<form method="post">
+    <label for="equation">Enter Equation(Not Balanced)</label>
+    <input type="text" name="equation" placeholder="e.g. H2 + O2 -> H2O" required><br>
+    <label for="given_substance">Enter the given substance</label>
+    <input type="text" name="given_substance" placeholder="Given substance" required><br>
+    <label for ="given_mol_number">Enter the given substance amount</label>
+    <input type="number" name="given_mol_number" placeholder="Given moles" step="0.01" required><br>
+    <label for="target_substance">Enter the target substance</label>
+    <input type="text" name="target_substance" placeholder="Target substance" required><br>
+    <button type="submit">Calculate Target Moles</button>
+</form>
+
+{% if target_mol_number %}
+    <h2>Result:</h2>
+    <p>{{ target_mol_number }} mol of {{ target_substance }}</p>
+{% endif %}
+{% if stoichiometry_history %}
+    <div class="history">
+        <h3>History (Last 5):</h3>
+        <ul>
+            {% for item in stoichiometry_history|reverse %}
+            <li>
+                <strong>Equation:</strong> {{ item.equation }} <br>
+                <strong>Given:</strong> {{ item.given_mol_number }} mol of {{ item.given_substance }} <br>
+                <strong>Target:</strong> {{ item.target_mol_number }} mol of {{ item.target_substance }}
+                <hr>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endif %}
+{% endblock %}
